@@ -1,16 +1,21 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 import ItemDetailsModal from './ItemDetailsModal';
+import Navbar from './Navbar.jsx'
 
 function App() {
   const [query, setQuery] = useState('');
   const [container, setContainer] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedNutrient, setSelectedNutrient] = useState(null);
+
+  const categories = ['Categories'];
+const nutrients = ['Nutrients'];
 
   const fetchData = async () => {
     const options = {
@@ -53,8 +58,8 @@ function App() {
   const handleClick = (item) => {
     setSelectedItem(item);
     setModalOpen(true);
-  console.log("clicked")};
-
+    console.log("clicked");
+  };
 
   const closeModal = () => {
     setModalOpen(false);
@@ -64,13 +69,19 @@ function App() {
   return (
     <div className="App">
       <div className='appCSS'>
-        
-      <FoodForm query={query} onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
-      <FoodList container={container} handleClick={handleClick} />
+        <Navbar
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+          nutrients={nutrients}
+          selectedNutrient={selectedNutrient}
+          onSelectNutrient={setSelectedNutrient}
+        />
+        <FoodForm query={query} onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
+        <FoodList container={container} handleClick={handleClick} />
         {modalOpen && <ItemDetailsModal item={selectedItem} onClose={closeModal} />}
-        
       </div>
-      </div>
+    </div>
   );
 }
 
