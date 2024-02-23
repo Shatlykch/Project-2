@@ -24,3 +24,6 @@ The `FoodList` component is a functional component that renders a list of food i
 
 - React
 - Axios
+## Wireframe
+
+You can view the wireframe for this project [here](https://wireframe.cc/phG0F0).
