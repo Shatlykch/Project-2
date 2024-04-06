@@ -14,12 +14,12 @@ function Navbar({ categories, nutrients }) {
   return (
     
       <div className="actions">
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          {/* <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="">Select Option</option>
-              {/* <option value="input"></option> */}
+             
             <option value="input">Sort by nutrients</option>
             <option value="name">Sort by category</option>
-        </select>
+        </select> */}
       </div>
   )
   
